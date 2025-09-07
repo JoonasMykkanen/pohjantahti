@@ -1,4 +1,4 @@
-import { ShieldCheck, TrendingUp, Handshake, PiggyBank } from 'lucide-react';
+import { ShieldCheck, Handshake, PiggyBank } from 'lucide-react';
 
 const services = [
   {
