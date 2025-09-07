@@ -24,3 +24,23 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@font-face {
+  font-family: 'Courier Prime';
+  src: url('/fonts/CourierPrime-Regular.ttf') format('truetype');
+  font-weight: 400; /* 400 is the numeric value for 'normal' weight */
+  font-style: normal;
+  font-display: swap; /* Improves perceived performance */
+}
+
+@font-face {
+  font-family: 'Courier Prime';
+  src: url('/fonts/CourierPrime-Bold.ttf') format('truetype');
+  font-weight: 700; /* 700 is the numeric value for 'bold' weight */
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-courier-prime {
+  font-family: 'Courier Prime', monospace; /* Use the name from @font-face and add a fallback */
+}
