@@ -1,7 +1,14 @@
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
+import type { FC, ReactNode } from 'react';
 
-const PersonCard = ({ src, alt, name, children }) => {
-  // Added a small change here to center text on mobile for better alignment
+type PersonCardProps = {
+  src: string | StaticImageData;
+  alt: string;
+  name: string;
+  children: ReactNode;
+};
+
+const PersonCard: FC<PersonCardProps> = ({ src, alt, name, children }) => {
   return (
     <div className="flex flex-col items-center md:flex-row md:items-start text-center md:text-left gap-6 max-w-md">
       <Image src={src} alt={alt} width={80} height={80} className="rounded-3xl shadow-md shrink-0 mt-1" />
@@ -12,7 +19,6 @@ const PersonCard = ({ src, alt, name, children }) => {
     </div>
   );
 };
-
 
 const AboutUs = () => {
   return (
