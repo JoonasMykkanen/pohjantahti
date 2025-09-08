@@ -108,13 +108,18 @@ const ContactForm = () => {
             {error && <p className="text-red-500 text-center mb-4">{error}</p>}
             <div className="flex flex-col sm:flex-row gap-4">
               <button
+                id="action_email"
                 type="submit"
                 disabled={isSubmitting}
                 className="hover:cursor-pointer w-full bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-800 transition-all duration-300 transform hover:scale-105 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Lähetetään...' : 'Lähetä tiedustelu sähköpostiin'}
               </button>
-              <a href="tel:+358400197329" className="hover:cursor-pointer w-full text-center bg-teal-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-teal-500 transition-all duration-300 transform hover:scale-105 shadow-md">
+              <a
+                id="action_phone"
+                href="tel:+358400197329"
+                className="hover:cursor-pointer w-full text-center bg-teal-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-teal-500 transition-all duration-300 transform hover:scale-105 shadow-md"
+              >
                 Soita Joonakselle
               </a>
             </div>
