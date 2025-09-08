@@ -1,8 +1,6 @@
 "use client";
 
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { type Apartment, apartments } from '@/data/Apartments';
-import { useState } from 'react';
 import Image from 'next/image';
 import { Dialog, DialogTitle, DialogContent, DialogTrigger, DialogClose } from '@/components/ui/dialog';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";

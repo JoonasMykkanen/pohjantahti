@@ -8,8 +8,8 @@ const ContactForm = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false); // For loading state
-  const [error, setError] = useState(''); // For error messages
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const router = useRouter();
 
@@ -34,7 +34,7 @@ const ContactForm = () => {
       // If successful, redirect to the success page
       router.push('/success');
 
-    } catch (err: any) {
+    } catch (err: String | any) {
       setError(err.message || 'An unexpected error occurred.');
     } finally {
       setIsSubmitting(false);
