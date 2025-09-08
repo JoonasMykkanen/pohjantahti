@@ -34,7 +34,7 @@ const ContactForm = () => {
       // If successful, redirect to the success page
       router.push('/success');
 
-    } catch (err: String | any) {
+    } catch (err: string | any) {
       setError(err.message || 'An unexpected error occurred.');
     } finally {
       setIsSubmitting(false);
