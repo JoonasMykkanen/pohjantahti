@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { toast } from "sonner"
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -12,6 +13,13 @@ const ContactForm = () => {
   const [error, setError] = useState('');
 
   const router = useRouter();
+
+  const resetFields = () => {
+    setName("");
+    setEmail("");
+    setPhone("");
+    setMessage("");
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,14 +39,13 @@ const ContactForm = () => {
         throw new Error('Failed to send message.');
       }
 
-      // If successful, redirect to the success page
-      router.push('/success');
-
-    } catch (err: unknown) { // 1. Change to unknown
-      if (err instanceof Error) { // 2. Check if it's a real Error
-        setError(err.message); // Now it's safe to access .message
+      toast.success("Viesti lähetetty🎉");
+      resetFields();
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
       } else {
-        setError('An unexpected error occurred.'); // 3. Fallback for other types
+        setError('An unexpected error occurred.');
       }
     } finally {
       setIsSubmitting(false);
@@ -48,7 +55,7 @@ const ContactForm = () => {
   return (
     <section id="contact" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
-        <h2 className="font-courier-prime text-4xl font-bold text-center text-gray-800 mb-2">
+        <h2 className="font-courier-prime text-3xl md:text-4xl font-bold text-center text-gray-800 mb-2">
           Verkostoidutaanko?
         </h2>
         <div className="w-full flex justify-center">
@@ -110,7 +117,7 @@ const ContactForm = () => {
               ></textarea>
             </div>
             {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col w-full sm:flex-row gap-4">
               <button
                 id="action_email"
                 type="submit"

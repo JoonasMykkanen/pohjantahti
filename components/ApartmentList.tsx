@@ -32,12 +32,12 @@ const ApartmentDialogContent = ({ apartment }: { apartment: Apartment }) => {
       </div>
 
       <div className="flex-grow overflow-y-auto p-6 grid grid-cols-1 lg:grid-cols-7 gap-8">
-        <div className="relative lg:col-span-4 rounded-lg overflow-hidden">
-          <Carousel className="w-full h-full">
+        <div className="relative lg:col-span-4 rounded-lg">
+          <Carousel className="w-full">
             <CarouselContent className="h-full">
               {apartment.images.map((src, index) => (
                 <CarouselItem key={index} className="h-full">
-                  <div className="relative w-full h-[500px] bg-white">
+                  <div className="relative w-full aspect-square bg-white lg:h-[500px] lg:aspect-auto">
                     <Image 
                         src={src} 
                         alt={`${apartment.name} image ${index + 1}`} 
