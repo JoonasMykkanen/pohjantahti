@@ -1,4 +1,4 @@
-"use client"; // This is a client component
+"use client";
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -8,12 +8,37 @@ const ContactForm = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false); // For loading state
+  const [error, setError] = useState(''); // For error messages
 
-  const router = useRouter()
+  const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    router.push('/success');
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, phone, message }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message.');
+      }
+
+      // If successful, redirect to the success page
+      router.push('/success');
+
+    } catch (err: any) {
+      setError(err.message || 'An unexpected error occurred.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -23,17 +48,16 @@ const ContactForm = () => {
           Verkostoidutaanko?
         </h2>
         <div className="w-full flex justify-center">
-        <p className="text-md text-center max-w-lg font-normal text-gray-600 mb-8">
-          Ei hätää, en ole mikään myyntitykki. Olen korkeintaan hieman innostunut yrittäjä.
-          Pistä vaan viestiä tulemaan, niin jutellaan ihan rennosti.
-          <br />
-          <br />
-          Mulle saa myös soittaa vaikka ei olisi ostamassa mitään, tykkään sparrata ja vaihtaa ajatuksia
-          yleisesti kaikesta mahdollisesta ja täten oppia uutta!
-        </p>
-
+          <p className="text-md text-center max-w-lg font-normal text-gray-600 mb-8">
+            Ei hätää, en ole mikään myyntitykki. Olen korkeintaan hieman innostunut yrittäjä.
+            Pistä vaan viestiä tulemaan, niin jutellaan ihan rennosti.
+            <br />
+            <br />
+            Mulle saa myös soittaa vaikka ei olisi ostamassa mitään, tykkään sparrata ja vaihtaa ajatuksia
+            yleisesti kaikesta mahdollisesta ja täten oppia uutta!
+          </p>
         </div>
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto text-black">
           <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
@@ -81,12 +105,16 @@ const ContactForm = () => {
                 required
               ></textarea>
             </div>
+            {error && <p className="text-red-500 text-center mb-4">{error}</p>}
             <div className="flex flex-col sm:flex-row gap-4">
-              {/* 3. Update button styles */}
-              <button type="submit" className="hover:cursor-pointer w-full bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-800 transition-all duration-300 transform hover:scale-105 shadow-md">
-                Lähetä tiedustelu sähköpostiin
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="hover:cursor-pointer w-full bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-800 transition-all duration-300 transform hover:scale-105 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'Lähetetään...' : 'Lähetä tiedustelu sähköpostiin'}
               </button>
-              <a href="tel:+358401234567" className="hover:cursor-pointer w-full text-center bg-teal-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-teal-500 transition-all duration-300 transform hover:scale-105 shadow-md">
+              <a href="tel:+358400197329" className="hover:cursor-pointer w-full text-center bg-teal-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-teal-500 transition-all duration-300 transform hover:scale-105 shadow-md">
                 Soita Joonakselle
               </a>
             </div>

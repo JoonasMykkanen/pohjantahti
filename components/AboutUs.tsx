@@ -29,7 +29,7 @@ const AboutUs = () => {
           {/* Image Section */}
           <div className="relative w-full h-80 md:h-[600px] rounded-lg overflow-hidden shadow-xl">
             <Image
-              src="/family.jpg"
+              src="/images/family.jpg"
               alt="Our family"
               layout="fill"
               objectFit="cover"
