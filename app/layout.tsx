@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next"
 import { Toaster } from "@/components/ui/sonner"
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -37,6 +38,7 @@ export default function RootLayout({
         />
         <Suspense>
           <GoogleAnalytics />
+          <Analytics />
         </Suspense>
         {children}
         <Footer />
