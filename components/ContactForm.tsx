@@ -1,5 +1,6 @@
 "use client";
 
+import { trackEvent } from '@/lib/gtag';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from "sonner"
@@ -41,6 +42,7 @@ const ContactForm = () => {
 
       toast.success("Viesti lähetetty🎉");
       resetFields();
+      trackEvent('generate_lead', { method: 'email_form' });
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);
@@ -129,6 +131,7 @@ const ContactForm = () => {
               <a
                 id="action_phone"
                 href="tel:+358400197329"
+                onClick={() => trackEvent('generate_lead', { method: 'phone_form' })}
                 className="hover:cursor-pointer w-full text-center bg-teal-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-teal-500 transition-all duration-300 transform hover:scale-105 shadow-md"
               >
                 Soita Joonakselle

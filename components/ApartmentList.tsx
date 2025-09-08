@@ -4,6 +4,7 @@ import { type Apartment, apartments } from '@/data/Apartments';
 import Image from 'next/image';
 import { Dialog, DialogTitle, DialogContent, DialogTrigger, DialogClose } from '@/components/ui/dialog';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { trackEvent } from '@/lib/gtag';
 
 const formatCurrency = (amount: number) => {
   return new Intl.NumberFormat('fi-FI', { style: 'currency', currency: 'EUR' }).format(amount);
@@ -113,6 +114,11 @@ const ApartmentList = () => {
                     <DialogTrigger asChild>
                       <tr
                         className="border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
+                        onClick={() => {
+                          trackEvent('view_item', {
+                            items: [{ item_id: apt.id }]
+                          })
+                        }}
                       >
                         <td className="p-4 hidden md:table-cell font-mono text-gray-500">{apt.id}</td>
                         <td className="p-4 font-semibold text-gray-800">{`${apt.name} (${apt.type})`}</td>

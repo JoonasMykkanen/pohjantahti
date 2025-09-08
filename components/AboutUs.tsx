@@ -55,7 +55,6 @@ const AboutUs = () => {
         </div>
 
         <div className="relative mt-16 border-t pt-12">
-          {/* --- THIS IS THE CORRECTED LINE --- */}
           <div className="grid grid-cols-1 md:grid-cols-3 justify-items-center gap-y-12 md:gap-x-6">
             
             <PersonCard src="/images/people/joonas.jpeg" alt="Joonas" name="Joonas">
