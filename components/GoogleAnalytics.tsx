@@ -5,8 +5,8 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
 const pageview = (url: string) => {
-  if (typeof window.gtag !== "undefined") {
-    window.gtag("config", process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!, {
+  if (typeof (window as any).gtag !== "undefined") {
+    (window as any).gtag("config", process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!, {
       page_path: url,
     });
   }
@@ -17,9 +17,17 @@ export const GoogleAnalytics = () => {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const url = pathname + searchParams.toString();
+    if (!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) {
+      return;
+    }
+    
+    const url = pathname + (searchParams.toString() ? `?${searchParams.toString()}` : '');
     pageview(url);
   }, [pathname, searchParams]);
+
+  if (!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) {
+    return null;
+  }
 
   return (
     <>
