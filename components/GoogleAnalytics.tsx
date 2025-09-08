@@ -5,7 +5,9 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
 const pageview = (url: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   if (typeof (window as any).gtag !== "undefined") {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).gtag("config", process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!, {
       page_path: url,
     });
