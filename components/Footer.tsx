@@ -23,7 +23,7 @@ const Footer = () => {
           {/* Column 2: Contact Details */}
           <div className="flex flex-col items-center">
             <div>
-            <h3 className="text-lg font-semibold text-white mb-4 text-left">Yhteystiedot</h3>
+            <h3 className="text-lg font-semibold text-white mb-4 text-center">Yhteystiedot</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center justify-center md:justify-start">
                 <Phone size={16} className="mr-3 text-blue-400 flex-shrink-0" />

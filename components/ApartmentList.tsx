@@ -103,7 +103,7 @@ const ApartmentList = () => {
                   <th className="p-4 font-semibold">Kuvaus</th>
                   <th className="p-0 md:p-4 font-semibold">Hinta</th>
                   <th className="p-4 font-semibold hidden md:table-cell">Vuokra/kk</th>
-                  <th className="p-4 font-semibold hidden lg:table-cell">Vuokratuotto %</th>
+                  <th className="p-4 font-semibold table-cell min-w-[110px]">Tuotto %</th>
                   <th className="p-4 font-semibold">Status</th>
                 </tr>
               </thead>
@@ -118,7 +118,7 @@ const ApartmentList = () => {
                         <td className="p-4 font-semibold text-gray-800">{`${apt.name} (${apt.type})`}</td>
                         <td className="p-0 md:p-4">{formatCurrency(apt.price)}</td>
                         <td className="p-4 hidden md:table-cell">{formatCurrency(apt.rent)}</td>
-                        <td className="p-4 hidden lg:table-cell">{apt.roi.toFixed(2)} %</td>
+                        <td className="p-4 table-cell min-w-[100px]"><span> {apt.roi.toFixed(2)} %</span></td>
                         <td className="p-4"><StatusBadge status={apt.status} /></td>
                       </tr>
                     </DialogTrigger>
