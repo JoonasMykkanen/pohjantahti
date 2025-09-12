@@ -93,9 +93,14 @@ const ApartmentList = () => {
   return (
     <section id="listings" className="py-20 bg-gray-50 text-black">
       <div className="container mx-auto px-4">
-        <h2 className="font-courier-prime text-4xl font-bold text-center text-gray-800 mb-12">
+        <h2 className="font-courier-prime text-4xl font-bold text-center text-gray-800">
           Myytävät sijoitusasunnot
         </h2>
+        <div className="w-full flex justify-center">
+        <p className="mb-12 mt-1 text-center max-w-lg w-full">
+          Kaikki asunnot sijaitsevat Kanta-Hämeen alueella keskeisellä sijainnilla rautatieaseman välittömässä läheisyydessä ✅
+        </p>
+        </div>
         <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
           <div className="overflow-x-auto">
             <table className="w-full text-left">
