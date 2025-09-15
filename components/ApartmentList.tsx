@@ -25,7 +25,7 @@ const StatusBadge = ({ status }: { status: Apartment['status'] }) => {
 
 const ApartmentDialogContent = ({ apartment }: { apartment: Apartment }) => {
   return (
-    <div className="bg-white rounded-lg w-full h-full flex flex-col relative text-black overflow-y-scroll">
+    <div className="bg-white rounded-lg w-full h-full flex flex-col relative text-black">
       <div className="flex justify-between items-center p-4 border-b flex-shrink-0">
         <DialogTitle className="text-xl font-bold">
           {`${apartment.name} (${apartment.type})`} - <span className="font-mono text-gray-500">{apartment.id}</span>
@@ -134,7 +134,7 @@ const ApartmentList = () => {
                         <td className="p-4"><StatusBadge status={apt.status} /></td>
                       </tr>
                     </DialogTrigger>
-                    <DialogContent className="p-0 border-0 max-w-none w-full h-full md:w-full md:max-w-6xl md:h-auto md:max-h-[90vh] rounded-none md:rounded-lg">
+                    <DialogContent className="overflow-x-hidden p-0 border-0 max-w-none w-full h-full md:w-full md:max-w-6xl md:h-auto md:max-h-[90vh] rounded-none md:rounded-lg">
                       <ApartmentDialogContent apartment={apt} />
                     </DialogContent>
                   </Dialog>
