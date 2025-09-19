@@ -72,7 +72,7 @@ const ApartmentDialogContent = ({ apartment }: { apartment: Apartment }) => {
 
         <div className="space-y-3 lg:col-span-3">
           <h4 className="text-lg font-semibold border-b pb-2">Tiedot</h4>
-          <div className="flex justify-between items-center text-gray-700"><span>Tila:</span> <StatusBadge status={apartment.status} /></div>
+          <div className="flex justify-between items-center text-gray-700"><span>Tila:</span> <StatusBadge status={apartment.status} sale={null} /></div>
           <div className="flex justify-between text-gray-700"><span>Myyntihinta:</span> <span className="font-semibold text-gray-900">{formatCurrency(apartment.price)}</span></div>
           <div className="flex justify-between text-gray-700"><span>Vuokra:</span> <span className="font-semibold text-gray-900">{formatCurrency(apartment.rent)} / kk</span></div>
           <div className="flex justify-between text-gray-700"><span>Hoitovastike:</span> <span className="font-semibold text-gray-900">{formatCurrency(apartment.fee)} / kk</span></div>
