@@ -10,12 +10,21 @@ const formatCurrency = (amount: number) => {
   return new Intl.NumberFormat('fi-FI', { style: 'currency', currency: 'EUR' }).format(amount);
 };
 
-const StatusBadge = ({ status }: { status: Apartment['status'] }) => {
+const StatusBadge = ({ status, sale }: { status: Apartment['status'], sale: Apartment['sale'] }) => {
   const statusStyles = {
     vapaa: 'bg-green-100 text-green-800 border-green-300',
     varattu: 'bg-orange-100 text-orange-800 border-orange-300',
     myyty: 'bg-red-100 text-red-800 border-red-300',
   };
+
+  if (sale) {
+    return (
+      <span className={`px-3 py-1 text-sm font-medium rounded-full border ${statusStyles['varattu']}`}>
+        🔥TARJOUS🔥
+      </span>
+    )
+  }
+
   return (
     <span className={`px-3 py-1 text-sm font-medium rounded-full border ${statusStyles[status]}`}>
       {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -77,6 +86,12 @@ const ApartmentDialogContent = ({ apartment }: { apartment: Apartment }) => {
               <p className="text-gray-400 text-xs">70% lainoituksella | 4% korolla</p>
             </div>
           </div>
+
+
+          <h4 className="text-lg font-semibold border-b pb-2 pt-10">Muistiinpanot:</h4>
+          <p className="text-sm whitespace-pre-line">
+            {apartment.desc}
+          </p>
         </div>
       </div>
       <div className="p-4 border-t flex justify-end flex-shrink-0">
@@ -106,7 +121,7 @@ const ApartmentList = () => {
             <table className="w-full text-left">
               <thead className="bg-gray-100 border-b border-gray-200">
                 <tr>
-                  <th className="p-4 font-semibold hidden md:table-cell">Huoneisto</th>
+                  <th className="p-4 font-semibold table-cell">Huoneisto</th>
                   <th className="p-4 font-semibold">Kuvaus</th>
                   <th className="p-0 md:p-4 font-semibold">Hinta</th>
                   <th className="p-4 font-semibold hidden md:table-cell">Vuokra/kk</th>
@@ -133,12 +148,12 @@ const ApartmentList = () => {
                           })
                         }}
                       >
-                        <td className="p-4 hidden md:table-cell font-mono text-gray-500">{apt.id}</td>
+                        <td className="p-4 table-cell font-mono text-gray-500">{apt.id}</td>
                         <td className="p-4 font-semibold text-gray-800">{`${apt.name} (${apt.type})`}</td>
                         <td className="p-0 md:p-4">{formatCurrency(apt.price)}</td>
                         <td className="p-4 hidden md:table-cell">{formatCurrency(apt.rent)}</td>
                         <td className="p-4 table-cell min-w-[100px]"><span> {apt.roi.toFixed(2)} %</span></td>
-                        <td className="p-4"><StatusBadge status={apt.status} /></td>
+                        <td className="pr-8 whitespace-nowrap"><StatusBadge status={apt.status} sale={apt.sale} /></td>
                       </tr>
                     </DialogTrigger>
                     <DialogContent className="overflow-x-hidden p-0 border-0 max-w-none w-full h-full md:w-full md:max-w-6xl md:h-auto md:max-h-[90vh] rounded-none md:rounded-lg">
