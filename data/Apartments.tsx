@@ -16,23 +16,23 @@ export type Apartment = {
 };
 
 const rawApartments: Apartment[] = [
-  {
-    id: 'A32',
-    name: 'Täysin remontoitu kolmio',
-    type: '3h+k+p',
-    price: 51000,
-    rent: 930,
-    fee: 332.5,
-    roi: 14.08,
-    coc: 36.01,
-    sale: true,
-    desc: `Juuri muokattu soluksi nostamalla uusi väliseinä keittiön ja olohuoneen väliin. Poikkeuksellisen kovat vuokrasopimukset sekä juuri kesällä 2025 remontoitu keittiö.
-      \n
-      Lähettämällä viestin tai lomakkeen 'A32' saat asunnosta vielä 1000€ lisä alennuksen jos kaupat toteutuvat ennen 1.11.2025!🤑
-    `,
-    images: [],
-    status: 'vapaa',
-  },
+  // {
+  //   id: 'A32',
+  //   name: 'Täysin remontoitu kolmio',
+  //   type: '3h+k+p',
+  //   price: 51000,
+  //   rent: 930,
+  //   fee: 332.5,
+  //   roi: 14.08,
+  //   coc: 36.01,
+  //   sale: true,
+  //   desc: `Juuri muokattu soluksi nostamalla uusi väliseinä keittiön ja olohuoneen väliin. Poikkeuksellisen kovat vuokrasopimukset sekä juuri kesällä 2025 remontoitu keittiö.
+  //     \n
+  //     Lähettämällä viestin tai lomakkeen 'A32' saat asunnosta vielä 1000€ lisä alennuksen jos kaupat toteutuvat ennen 1.11.2025!🤑
+  //   `,
+  //   images: [],
+  //   status: 'vapaa',
+  // },
   {
     id: 'A31',
     name: 'Täysin remontoitu kaksio',

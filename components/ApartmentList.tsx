@@ -63,8 +63,8 @@ const ApartmentDialogContent = ({ apartment }: { apartment: Apartment }) => {
             </CarouselContent>
             {apartment.images.length > 1 && (
                 <>
-                    <CarouselPrevious className="absolute left-2 bg-black bg-opacity-40 text-white hover:bg-opacity-60" />
-                    <CarouselNext className="absolute right-2 bg-black bg-opacity-40 text-white hover:bg-opacity-60" />
+                    <CarouselPrevious className="absolute left-2 bg-black bg-opacity-40 text-gray-600 hover:bg-gray-200 hover:shadow-2xl hover:text-black" />
+                    <CarouselNext className="absolute right-2 bg-black bg-opacity-40 text-gray-600 hover:bg-gray-200 hover:shadow-2xl hover:text-black" />
                 </>
             )}
           </Carousel>
@@ -78,6 +78,7 @@ const ApartmentDialogContent = ({ apartment }: { apartment: Apartment }) => {
           <div className="flex justify-between text-gray-700"><span>Hoitovastike:</span> <span className="font-semibold text-gray-900">{formatCurrency(apartment.fee)} / kk</span></div>
 
           <h4 className="text-lg font-semibold border-b pb-2 pt-4">Tunnusluvut</h4>
+          <div className="flex justify-between text-gray-700"><span>Kassavirta:</span> <span className="font-semibold text-gray-900">{formatCurrency(apartment.rent - apartment.fee)} / kk</span></div>
           <div className="flex justify-between text-gray-700"><span>Vuokratuotto:</span> <span className="font-semibold text-green-700">{apartment.roi.toFixed(2)} %</span></div>
           <div className="relative flex justify-between text-gray-700">
             <span>Oman pääoman tuotto:</span>
@@ -121,12 +122,12 @@ const ApartmentList = () => {
             <table className="w-full text-left">
               <thead className="bg-gray-100 border-b border-gray-200">
                 <tr>
-                  <th className="p-4 font-semibold table-cell">Huoneisto</th>
+                  {/* <th className="p-4 font-semibold table-cell">Huoneisto</th> */}
                   <th className="p-4 font-semibold">Kuvaus</th>
                   <th className="p-0 md:p-4 font-semibold">Hinta</th>
-                  <th className="p-4 font-semibold hidden md:table-cell">Vuokra/kk</th>
+                  {/* <th className="p-4 font-semibold hidden md:table-cell">Vuokra/kk</th> */}
                   <th className="p-4 font-semibold table-cell min-w-[110px]">Tuotto %</th>
-                  <th className="p-4 font-semibold">Status</th>
+                  <th className="p-4 pr-8 font-semibold whitespace-nowrap text-end ">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -148,12 +149,12 @@ const ApartmentList = () => {
                           })
                         }}
                       >
-                        <td className="p-4 table-cell font-mono text-gray-500">{apt.id}</td>
+                        {/* <td className="p-4 table-cell font-mono text-gray-500">{apt.id}</td> */}
                         <td className="p-4 font-semibold text-gray-800">{`${apt.name} (${apt.type})`}</td>
                         <td className="p-0 md:p-4">{formatCurrency(apt.price)}</td>
-                        <td className="p-4 hidden md:table-cell">{formatCurrency(apt.rent)}</td>
+                        {/* <td className="p-4 hidden md:table-cell">{formatCurrency(apt.rent)}</td> */}
                         <td className="p-4 table-cell min-w-[100px]"><span> {apt.roi.toFixed(2)} %</span></td>
-                        <td className="pr-8 whitespace-nowrap"><StatusBadge status={apt.status} sale={apt.sale} /></td>
+                        <td className="pr-8 max-w-[50px] whitespace-nowrap text-end"><StatusBadge status={apt.status} sale={apt.sale} /></td>
                       </tr>
                     </DialogTrigger>
                     <DialogContent className="overflow-x-hidden p-0 border-0 max-w-none w-full h-full md:w-full md:max-w-6xl md:h-auto md:max-h-[90vh] rounded-none md:rounded-lg">
