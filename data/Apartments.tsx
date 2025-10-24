@@ -79,7 +79,7 @@ const rawApartments: Apartment[] = [
     id: 'A7',
     name: 'Peruskuntoinen kaksio',
     type: '2h+k+p',
-    price: 38890,
+    price: 39890,
     rent: 582.93,
     fee: 225,
     roi: 11.02,
