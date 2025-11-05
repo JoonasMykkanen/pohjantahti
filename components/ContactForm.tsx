@@ -62,7 +62,7 @@ const ContactForm = () => {
         </h2>
         <div className="w-full flex justify-center">
           <p className="text-md text-center max-w-lg font-normal text-gray-600 mb-8">
-            Ei hätää, en ole mikään myyntitykki. Olen korkeintaan hieman innostunut yrittäjä.
+            Ei hätää, en ole mikään myyntitykki. Olen korkeintaan hieman innostunut sijoittaja.
             Pistä vaan viestiä tulemaan, niin jutellaan ihan rennosti.
             <br />
             <br />
